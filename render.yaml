@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: nimah-bot-runner
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: RUNNER_SECRET
+        generateValue: true
+      - key: MONGODB_URI
+        sync: false
+      - key: ALLOWED_ORIGIN
+        sync: false
+      - key: MAX_RUNNING
+        value: "2"
